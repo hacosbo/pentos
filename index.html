@@ -73,8 +73,8 @@
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg-secondary);
             color: var(--text-primary);
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 11px;
+            line-height: 1.3;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
@@ -138,7 +138,7 @@
 
         /* ===== SIDEBAR - FIGMA STYLE ===== */
         .sidebar {
-            width: 260px;
+            width: 200px;
             background: var(--bg-primary);
             border-right: 1px solid var(--border-primary);
             display: flex;
@@ -150,7 +150,7 @@
         }
 
         .logo-section {
-            padding: 24px 20px;
+            padding: 12px 12px;
             border-bottom: 1px solid var(--border-secondary);
             background: linear-gradient(135deg, var(--bg-accent), var(--bg-primary));
         }
@@ -158,66 +158,66 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 6px;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 24px;
+            height: 24px;
             background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
-            border-radius: 10px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 1px 4px rgba(16, 185, 129, 0.3);
             animation: pulse-glow 3s infinite;
         }
 
         .logo-text h1 {
-            font-size: 20px;
+            font-size: 13px;
             font-weight: 800;
             color: var(--text-primary);
             margin: 0;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.2px;
         }
 
         .logo-text p {
-            font-size: 11px;
+            font-size: 7px;
             color: var(--primary-green);
             font-weight: 700;
-            margin: 2px 0 0 0;
+            margin: 0;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.5px;
         }
 
         .nav-section {
             flex: 1;
-            padding: 24px 16px;
+            padding: 12px 8px;
         }
 
         .nav-header {
-            font-size: 11px;
+            font-size: 8px;
             color: var(--text-muted);
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.3px;
             text-transform: uppercase;
-            margin-bottom: 16px;
-            padding-left: 12px;
+            margin-bottom: 8px;
+            padding-left: 6px;
         }
 
         .nav-items {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 2px;
         }
 
         .nav-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 16px;
-            border-radius: 12px;
+            gap: 6px;
+            padding: 6px 8px;
+            border-radius: 6px;
             color: var(--text-secondary);
             font-weight: 500;
             cursor: pointer;
@@ -227,7 +227,7 @@
             width: 100%;
             text-align: left;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 10px;
             position: relative;
             overflow: hidden;
         }
@@ -328,7 +328,7 @@
         /* ===== MAIN CONTAINER ===== */
         .main-container {
             flex: 1;
-            margin-left: 260px;
+            margin-left: 200px;
             display: flex;
             flex-direction: column;
         }
@@ -337,7 +337,7 @@
         .header {
             background: var(--bg-primary);
             border-bottom: 1px solid var(--border-primary);
-            padding: 20px 24px;
+            padding: 10px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -348,15 +348,15 @@
         }
 
         .header-left h1 {
-            font-size: 24px;
+            font-size: 16px;
             font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
+            margin-bottom: 1px;
+            letter-spacing: -0.2px;
         }
 
         .header-left p {
-            font-size: 14px;
+            font-size: 10px;
             color: var(--text-secondary);
             font-weight: 500;
         }
@@ -364,29 +364,29 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 8px;
         }
 
         .live-indicator {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
+            gap: 3px;
+            padding: 3px 6px;
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
             border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 20px;
-            font-size: 12px;
+            border-radius: 12px;
+            font-size: 8px;
             font-weight: 700;
             color: var(--primary-green);
-            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 1px 3px rgba(16, 185, 129, 0.2);
         }
 
         .notification-badge {
             background: linear-gradient(135deg, var(--error), #dc2626);
             color: white;
-            padding: 4px 8px;
-            border-radius: 16px;
-            font-size: 10px;
+            padding: 2px 4px;
+            border-radius: 8px;
+            font-size: 8px;
             font-weight: 700;
             position: relative;
             animation: bounce-in 0.6s ease-out;
@@ -394,11 +394,83 @@
 
         /* ===== CONTENT AREA ===== */
         .content-area {
-            padding: 20px;
+            padding: 10px;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
             animation: fade-in-up 0.6s ease-out;
+        }
+
+        /* ===== CHART SECTION ===== */
+        .chart-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-green), var(--info), var(--purple));
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .chart-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .chart-subtitle {
+            font-size: 9px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .legend-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            border: 1px solid white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .legend-label {
+            font-size: 8px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .chart-container {
+            height: 180px;
+            position: relative;
         }
 
         /* ===== TABS ===== */
@@ -518,8 +590,8 @@
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 12px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow-sm);
             cursor: pointer;
@@ -553,18 +625,18 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
         }
 
         .project-info h3 {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .project-location {
-            font-size: 12px;
+            font-size: 9px;
             color: var(--text-tertiary);
             display: flex;
             align-items: center;
@@ -961,9 +1033,9 @@
         }
 
         .btn {
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -971,7 +1043,7 @@
             font-family: inherit;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             text-transform: none;
         }
 
@@ -991,12 +1063,12 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
             color: white;
-            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 1px 3px rgba(16, 185, 129, 0.3);
         }
 
         .btn-primary:hover {
             background: linear-gradient(135deg, var(--primary-green-dark), var(--primary-green));
-            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.4);
         }
 
         .btn-secondary {
@@ -1496,6 +1568,143 @@
             transform: translateY(-1px);
         }
 
+        /* ===== PROJECT DETAILS MODAL ===== */
+        .project-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+        }
+
+        .project-modal-container {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-primary);
+            overflow: hidden;
+            animation: fade-in-up 0.4s ease-out;
+        }
+
+        .project-modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-primary);
+            background: linear-gradient(135deg, var(--bg-accent), var(--bg-primary));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-modal-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-modal-title h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .project-score-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 12px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .project-modal-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            color: var(--text-tertiary);
+            transition: all 0.3s ease;
+        }
+
+        .project-modal-close:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .project-modal-content {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .project-detail-section {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-secondary);
+        }
+
+        .project-detail-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .detail-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .detail-section-content {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .metric-detail {
+            text-align: center;
+            padding: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            border: 1px solid var(--border-primary);
+        }
+
+        .metric-detail-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 2px;
+        }
+
+        .metric-detail-label {
+            font-size: 9px;
+            color: var(--text-tertiary);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
         /* ===== UTILITIES ===== */
         .hidden { 
             display: none !important; 
@@ -1618,7 +1827,7 @@
                             v-for="project in projects" 
                             :key="project.id"
                             class="project-card" 
-                            @click="showProjectDetail(project.id)"
+                            @click="showProjectDetails(project)"
                         >
                             <div class="project-header">
                                 <div class="project-info">
@@ -1823,6 +2032,120 @@
                         <i data-lucide="send" style="width: 16px; height: 16px;"></i>
                         Enviar
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Details Modal -->
+        <div v-if="showProjectModal" class="project-modal" @click="closeProjectModal">
+            <div class="project-modal-container" @click.stop>
+                <div class="project-modal-header">
+                    <div class="project-modal-title">
+                        <i data-lucide="building" style="width: 18px; height: 18px; color: var(--primary-green);"></i>
+                        <h3>{{ selectedProject?.project || 'Proyecto' }}</h3>
+                        <div class="project-score-badge" :style="{ 
+                            background: selectedProject?.score >= 90 ? 'var(--primary-green)' : 
+                                       selectedProject?.score >= 75 ? 'var(--info)' : 'var(--warning)',
+                            color: 'white' 
+                        }">
+                            {{ selectedProject?.score || '--' }}/100
+                        </div>
+                    </div>
+                    <button class="project-modal-close" @click="closeProjectModal">
+                        <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+                    </button>
+                </div>
+                
+                <div class="project-modal-content">
+                    <div class="project-detail-section">
+                        <h4 class="detail-section-title">
+                            <i data-lucide="target" style="width: 14px; height: 14px; color: var(--primary-green);"></i>
+                            Información General
+                        </h4>
+                        <div class="detail-section-content">
+                            <p><strong>Ubicación:</strong> {{ selectedProject?.location || 'Medellín, Antioquia' }}</p>
+                            <p><strong>Estado:</strong> {{ selectedProject?.status || 'En operación' }}</p>
+                            <p><strong>Última verificación:</strong> {{ new Date().toLocaleDateString('es-ES') }}</p>
+                            <p><strong>Certificaciones:</strong> LEED Gold, EDGE Advanced, ESG Verified</p>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-section">
+                        <h4 class="detail-section-title">
+                            <i data-lucide="bar-chart-3" style="width: 14px; height: 14px; color: var(--info);"></i>
+                            Métricas ESG Detalladas
+                        </h4>
+                        <div class="metrics-row">
+                            <div class="metric-detail">
+                                <div class="metric-detail-value">{{ Math.floor((selectedProject?.score || 85) * 0.4) }}/40</div>
+                                <div class="metric-detail-label">Ambiental</div>
+                            </div>
+                            <div class="metric-detail">
+                                <div class="metric-detail-value">{{ Math.floor((selectedProject?.score || 85) * 0.35) }}/35</div>
+                                <div class="metric-detail-label">Social</div>
+                            </div>
+                            <div class="metric-detail">
+                                <div class="metric-detail-value">{{ Math.floor((selectedProject?.score || 85) * 0.25) }}/25</div>
+                                <div class="metric-detail-label">Gobernanza</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-section">
+                        <h4 class="detail-section-title">
+                            <i data-lucide="leaf" style="width: 14px; height: 14px; color: var(--primary-green);"></i>
+                            Impacto Ambiental
+                        </h4>
+                        <div class="detail-section-content">
+                            <p>• <strong>Reducción CO₂:</strong> -28% vs baseline municipal (147 ton/año)</p>
+                            <p>• <strong>Energía renovable:</strong> 67% del consumo total</p>
+                            <p>• <strong>Agua reciclada:</strong> 2,847 litros/día recuperados</p>
+                            <p>• <strong>Residuos reciclados:</strong> 89% separación efectiva</p>
+                            <p>• <strong>Certificaciones ambientales:</strong> ISO 14001, LEED Gold</p>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-section">
+                        <h4 class="detail-section-title">
+                            <i data-lucide="users" style="width: 14px; height: 14px; color: var(--info);"></i>
+                            Impacto Social
+                        </h4>
+                        <div class="detail-section-content">
+                            <p>• <strong>Empleos directos generados:</strong> {{ Math.floor(Math.random() * 200 + 150) }} posiciones</p>
+                            <p>• <strong>Empleos indirectos:</strong> {{ Math.floor(Math.random() * 100 + 80) }} adicionales estimados</p>
+                            <p>• <strong>Inversión comunitaria:</strong> ${{ Math.floor(Math.random() * 500 + 200) }K anuales</p>
+                            <p>• <strong>Programas sociales:</strong> 3 iniciativas activas</p>
+                            <p>• <strong>Beneficiarios comunidad:</strong> {{ Math.floor(Math.random() * 2000 + 1500) }} personas</p>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-section">
+                        <h4 class="detail-section-title">
+                            <i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--purple);"></i>
+                            Verificación Automática
+                        </h4>
+                        <div class="detail-section-content">
+                            <p>• <strong>Última verificación:</strong> {{ new Date().toLocaleTimeString('es-ES') }}</p>
+                            <p>• <strong>Fuentes verificadas:</strong> 4 APIs oficiales</p>
+                            <p>• <strong>Precisión datos:</strong> 99.{{ Math.floor(Math.random() * 9 + 1) }}%</p>
+                            <p>• <strong>Sensores IoT:</strong> {{ Math.floor(Math.random() * 50 + 120) }} unidades activas</p>
+                            <p>• <strong>Auditorías automáticas:</strong> Cada 15 minutos</p>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-section">
+                        <h4 class="detail-section-title">
+                            <i data-lucide="trending-up" style="width: 14px; height: 14px; color: var(--warning);"></i>
+                            Proyecciones & Recomendaciones IA
+                        </h4>
+                        <div class="detail-section-content">
+                            <p>• <strong>Tendencia score:</strong> +{{ Math.floor(Math.random() * 5 + 2) }} puntos estimados próximos 6 meses</p>
+                            <p>• <strong>ROI ESG premium:</strong> +{{ Math.floor(Math.random() * 8 + 12) }}% vs desarrollo tradicional</p>
+                            <p>• <strong>Tiempo certificación:</strong> -{{ Math.floor(Math.random() * 20 + 40) }}% vs proceso manual</p>
+                            <p>• <strong>Riesgo compliance:</strong> Bajo ({{ Math.floor(Math.random() * 5 + 2) }}% probabilidad desvío)</p>
+                            <p>• <strong>Recomendación IA:</strong> Acelerar inversión energética Q2 2026</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2133,6 +2456,10 @@
                     chatInput: '',
                     aiChatMessages: [],
                     conversationStep: 0,
+
+                    // Project Details Modal System
+                    showProjectModal: false,
+                    selectedProject: null,
                     
                     // AI Conversation Scenarios
                     aiScenarios: [
@@ -2330,94 +2657,6 @@
                     this.esgChart = new Chart(ctx, chartConfig);
                 },
 
-                showProjectDetail(projectId) {
-                    const projects = {
-                        mixy: {
-                            name: 'Mixy Mall Centro',
-                            score: '94/100',
-                            status: 'Superando todas las metas ESG',
-                            details: `🏢 PROYECTO ESTRELLA del portafolio Pento
-
-📊 PERFORMANCE ACTUAL:
-• Empleos: 142/120 (+18% vs prometido)  
-• Emisiones: -28% (meta: -30%, 93% cumplimiento)
-• Inversión Social: $2.8M ($2.5M prometido, +12%)
-• Score ESG: 94/100 (Top 5% sector Colombia)
-
-🔄 VERIFICACIÓN AUTOMÁTICA:
-• Última actualización: Hace 2 minutos
-• Fuente: API DANE + Sensores IoT + Alcaldía
-• Precisión: 99.8% vs auditoría manual
-
-💰 IMPACTO INVERSIONISTAS:
-• Acceso a $50M+ fondos ESG garantizado
-• ROI premium: +18% vs desarrollo tradicional
-• Certificación LEED Gold: En proceso
-
-🎯 PRÓXIMOS HITOS:
-• Q2: Alcanzar meta -30% emisiones
-• Q3: Expansión modelo a 3 proyectos`
-                        },
-                        eco: {
-                            name: 'Eco Towers Laureles',
-                            score: '76/100', 
-                            status: 'Requiere atención - Plan de mejora activo',
-                            details: `⚠️ PROYECTO CON ALERTAS ACTIVAS
-
-📊 PERFORMANCE ACTUAL:
-• Empleos: 88/95 (-7% vs prometido)
-• Emisiones: -18% (meta: -25%, incumplimiento)
-• Inversión Social: $1.9M ($2.0M prometido)
-• Score ESG: 76/100 (Bajo benchmark)
-
-🚨 ALERTAS AUTOMÁTICAS:
-• CO2 +12% sobre límite (sensores IoT)
-• HVAC requiere auditoría urgente
-• Plan remedial: 15 días para implementar
-
-💡 PLAN DE MEJORA:
-• Inversión requerida: $300K energético
-• Timeline: 3 meses compliance
-• Score objetivo Q3: 85/100
-
-🔧 ACCIONES INMEDIATAS:
-• Auditoría sistema HVAC
-• Compensación carbono: 2.3 toneladas`
-                        },
-                        verde: {
-                            name: 'Verde Parque Norte',
-                            score: '91/100',
-                            status: 'Proyecto modelo - Replicar en desarrollos',
-                            details: `🏆 PROYECTO MODELO DE ÉXITO
-
-📊 PERFORMANCE ACTUAL:
-• Empleos: 370/350 (+6% vs prometido)
-• Emisiones: -33% (superó -30% objetivo)
-• Inversión Social: $3.2M ($3.0M prometido)
-• Score ESG: 91/100 (Benchmark portafolio)
-
-✨ LOGROS DESTACADOS:
-• 85% energía renovable (solar + eólica)
-• Certificación LEED Gold: APROBADA
-• Impacto comunitario: 5,200 beneficiarios
-
-📈 MODELO REPLICABLE:
-• 3 proyectos nuevos usarán framework
-• ROI ESG: +15% premium vs tradicional
-• Tiempo certificación: -40% vs manual
-
-🎯 EXPANSIÓN:
-• Bogotá: 2 desarrollos Q2
-• Medellín: Escalamiento Q3-Q4`
-                        }
-                    };
-
-                    const project = projects[projectId];
-                    if (project) {
-                        alert(`${project.name}\n\n📊 Score: ${project.score}\n📋 Estado: ${project.status}\n\n${project.details}`);
-                    }
-                },
-
                 generatePDF(projectName, event) {
                     // Find the report and set loading state
                     const report = this.reports.find(r => r.project === projectName);
@@ -2445,32 +2684,389 @@
                                 throw new Error('Cannot create jsPDF instance');
                             }
 
-                            // Simple PDF content
-                            doc.setFontSize(20);
-                            doc.text('PentOS - Reporte ESG', 20, 20);
+                            // Enhanced PDF content with much more information
+                            let yPos = 20;
                             
-                            doc.setFontSize(12);
-                            doc.text(`Proyecto: ${projectName}`, 20, 40);
-                            doc.text(`Fecha: ${new Date().toLocaleDateString('es-ES')}`, 20, 50);
+                            // HEADER
+                            doc.setFontSize(22);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(16, 185, 129);
+                            doc.text('PentOS', 20, yPos);
                             
-                            doc.text('Este reporte ha sido generado automaticamente por PentOS', 20, 70);
-                            doc.text('utilizando datos verificados en tiempo real.', 20, 80);
+                            doc.setFontSize(10);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            doc.text('Platform ESG Next Transparency Operations System', 100, yPos);
+                            yPos += 15;
                             
-                            doc.text('Fuentes de verificacion:', 20, 100);
-                            doc.text('• API DANE - Datos oficiales', 25, 110);
-                            doc.text('• Sensores IoT - Monitoreo ambiental', 25, 120);
-                            doc.text('• API Alcaldia - Permisos municipales', 25, 130);
-                            doc.text('• API Policia - Indicadores seguridad', 25, 140);
+                            // Project title
+                            doc.setFontSize(18);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text(`REPORTE ESG COMPLETO - ${projectName}`, 20, yPos);
+                            yPos += 10;
                             
-                            doc.text('Contacto: platform@pentos.co', 20, 160);
+                            // Current date and time
+                            const currentDate = new Date();
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(100, 116, 139);
+                            doc.text(`Generado: ${currentDate.toLocaleDateString('es-ES', { 
+                                weekday: 'long',
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            })}`, 20, yPos);
+                            yPos += 15;
+
+                            // RESUMEN EJECUTIVO
+                            doc.setFontSize(14);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text('I. RESUMEN EJECUTIVO', 20, yPos);
+                            yPos += 10;
+
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            
+                            const executiveSummary = [
+                                `Este reporte integral ha sido generado automáticamente por PentOS v3.1 utilizando`,
+                                `datos verificados en tiempo real de 4 fuentes oficiales colombianas. La metodología`,
+                                `ESG aplicada cumple con estándares internacionales GRI, SASB y marcos regulatorios`,
+                                `colombianos vigentes.`,
+                                ``,
+                                `SCORE ESG ACTUAL: ${Math.floor(Math.random() * 15 + 85)}/100 (${['Excelente', 'Muy Bueno', 'Bueno'][Math.floor(Math.random() * 3)]})`,
+                                `TENDENCIA: +${Math.floor(Math.random() * 8 + 2)} puntos vs trimestre anterior`,
+                                `BENCHMARK: Top ${Math.floor(Math.random() * 20 + 5)}% del sector inmobiliario Colombia`,
+                                `CERTIFICACIONES: ${Math.floor(Math.random() * 3 + 2)} certificaciones internacionales activas`
+                            ];
+                            
+                            executiveSummary.forEach(line => {
+                                if (yPos > 250) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 4;
+                            });
+                            yPos += 8;
+
+                            // METODOLOGÍA ESG
+                            doc.setFontSize(14);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text('II. METODOLOGÍA ESG PENTOS', 20, yPos);
+                            yPos += 10;
+
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            
+                            const methodology = [
+                                `ENVIRONMENTAL (40% del score total):`,
+                                `• Emisiones Scope 1, 2 y 3 verificadas con sensores IoT 24/7`,
+                                `• Gestión hídrica: consumo, tratamiento y reciclaje automatizado`,
+                                `• Energías renovables: medición continua vs grid tradicional`,
+                                `• Gestión residuos: separación, reciclaje y compostaje comunitario`,
+                                `• Certificaciones: LEED, BREEAM, EDGE con seguimiento automático`,
+                                ``,
+                                `SOCIAL (35% del score total):`,
+                                `• Generación empleos directos/indirectos verificados contra DANE`,
+                                `• Inversión comunitaria: programas, beneficiarios, impacto medible`,
+                                `• Seguridad: indicadores Policía Nacional, accidentalidad`,
+                                `• Accesibilidad: cumplimiento NTC 4141, auditorías regulares`,
+                                `• Cadena suministro: proveedores locales, MIPYMES certificadas`,
+                                ``,
+                                `GOVERNANCE (25% del score total):`,
+                                `• Transparencia: reportería automática, datos públicos`,
+                                `• Cumplimiento normativo: integración APIs gubernamentales`,
+                                `• Ética empresarial: políticas, capacitaciones, seguimiento`,
+                                `• Gestión riesgos: matriz automatizada, alertas predictivas`,
+                                `• Stakeholder engagement: mecanismos participación ciudadana`
+                            ];
+                            
+                            methodology.forEach(line => {
+                                if (yPos > 250) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 4;
+                            });
+                            yPos += 8;
+
+                            // FUENTES DE VERIFICACIÓN
+                            if (yPos > 230) {
+                                doc.addPage();
+                                yPos = 20;
+                            }
+                            
+                            doc.setFontSize(14);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text('III. FUENTES DE VERIFICACIÓN AUTOMÁTICA', 20, yPos);
+                            yPos += 10;
+
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            
+                            const sources = [
+                                `1. API DANE (Departamento Administrativo Nacional de Estadística):`,
+                                `   • Datos oficiales empleo: ${Math.floor(Math.random() * 500 + 1000)} verificaciones/mes`,
+                                `   • Precisión: 99.${Math.floor(Math.random() * 5 + 4)}% | Uptime: 99.9% | Latencia: <2s`,
+                                `   • Alcance: Empleos directos, indirectos, demografía, salarios`,
+                                `   • Última sincronización: ${new Date().toLocaleTimeString('es-ES')}`,
+                                ``,
+                                `2. Red IoT Sensorial (Internet de las Cosas):`,
+                                `   • ${Math.floor(Math.random() * 100 + 120)} sensores ambientales activos`,
+                                `   • Frecuencia: Lecturas cada 15 minutos, 24/7/365`,
+                                `   • Métricas: CO2, material particulado, ruido, vibración, temperatura`,
+                                `   • Tecnología: LoRaWAN mesh network + 4G backup`,
+                                `   • Certificaciones: ISO 27001, calibración IDEAM`,
+                                ``,
+                                `3. API Alcaldía Municipal:`,
+                                `   • Permisos construcción, funcionamiento, ocupación`,
+                                `   • ${Math.floor(Math.random() * 100 + 200)} documentos verificados`,
+                                `   • Cumplimiento POT, normativas zonificación`,
+                                `   • Integración: SAP municipal + blockchain inmutable`,
+                                `   • Auditabilidad: 100% trazabilidad documental`,
+                                ``,
+                                `4. API Policía Nacional:`,
+                                `   • ${Math.floor(Math.random() * 50 + 80)} indicadores seguridad pública`,
+                                `   • Delincuencia común, percepción seguridad, emergencias`,
+                                `   • Geolocalización: Radio 500m proyecto vs city average`,
+                                `   • Alertas automáticas: Eventos críticos tiempo real`,
+                                `   • Privacidad: Datos anonimizados, GDPR compliance`
+                            ];
+                            
+                            sources.forEach(line => {
+                                if (yPos > 250) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 4;
+                            });
+                            yPos += 8;
+
+                            // MÉTRICAS DETALLADAS
+                            if (yPos > 200) {
+                                doc.addPage();
+                                yPos = 20;
+                            }
+                            
+                            doc.setFontSize(14);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text('IV. MÉTRICAS DETALLADAS POR COMPONENTE', 20, yPos);
+                            yPos += 10;
+
+                            // Métricas ambientales
+                            doc.setFontSize(11);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(16, 185, 129);
+                            doc.text('ENVIRONMENTAL METRICS:', 20, yPos);
+                            yPos += 8;
+                            
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            
+                            const envMetrics = [
+                                `Emisiones GEI (Gases Efecto Invernadero):`,
+                                `• Scope 1 (directas): ${Math.floor(Math.random() * 50 + 20)} tCO2e/año`,
+                                `• Scope 2 (electricidad): ${Math.floor(Math.random() * 200 + 100)} tCO2e/año`,
+                                `• Scope 3 (cadena valor): ${Math.floor(Math.random() * 300 + 200)} tCO2e/año`,
+                                `• Reducción vs baseline: -${Math.floor(Math.random() * 15 + 20)}%`,
+                                `• Compensación: ${Math.floor(Math.random() * 50 + 30)} tCO2e forestación`,
+                                ``,
+                                `Gestión Hídrica:`,
+                                `• Consumo total: ${Math.floor(Math.random() * 5000 + 8000)} m³/mes`,
+                                `• Agua reciclada: ${Math.floor(Math.random() * 2000 + 1500)} m³/mes (${Math.floor(Math.random() * 20 + 15)}%)`,
+                                `• Tratamiento residuales: 100% en planta propia`,
+                                `• Jardines nativos: ${Math.floor(Math.random() * 30 + 50)}% especies autóctonas`,
+                                `• Eficiencia hídrica: ${Math.floor(Math.random() * 20 + 70)}% vs promedio sector`,
+                                ``,
+                                `Energía y Renovables:`,
+                                `• Consumo total: ${Math.floor(Math.random() * 500 + 800)} MWh/mes`,
+                                `• Solar fotovoltaica: ${Math.floor(Math.random() * 200 + 300)} MWh/mes (${Math.floor(Math.random() * 30 + 35)}%)`,
+                                `• Eficiencia energética: ${Math.floor(Math.random() * 25 + 40)}% vs baseline`,
+                                `• Certificado I-REC: 100% energía renovable certificada`,
+                                `• Sistemas inteligentes: HVAC adaptativo, iluminación LED`
+                            ];
+                            
+                            envMetrics.forEach(line => {
+                                if (yPos > 250) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 4;
+                            });
+                            yPos += 5;
+
+                            // Métricas sociales
+                            doc.setFontSize(11);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(59, 130, 246);
+                            doc.text('SOCIAL METRICS:', 20, yPos);
+                            yPos += 8;
+                            
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            
+                            const socialMetrics = [
+                                `Generación de Empleo (Verificación DANE):`,
+                                `• Empleos directos: ${Math.floor(Math.random() * 100 + 150)} posiciones`,
+                                `• Empleos indirectos estimados: ${Math.floor(Math.random() * 50 + 80)} adicionales`,
+                                `• Empleos construcción: ${Math.floor(Math.random() * 200 + 300)} (pico obra)`,
+                                `• Empleos locales: ${Math.floor(Math.random() * 30 + 65)}% vs región`,
+                                `• Mujeres empleadas: ${Math.floor(Math.random() * 20 + 40)}% total plantilla`,
+                                `• Jóvenes (18-28 años): ${Math.floor(Math.random() * 15 + 25)}% empleados`,
+                                ``,
+                                `Inversión Comunitaria:`,
+                                `• Inversión anual: $${Math.floor(Math.random() * 500 + 1000)}K USD`,
+                                `• Programas educativos: ${Math.floor(Math.random() * 3 + 2)} iniciativas activas`,
+                                `• Beneficiarios directos: ${Math.floor(Math.random() * 1000 + 1500)} personas/año`,
+                                `• Capacitaciones técnicas: ${Math.floor(Math.random() * 100 + 150)} graduados`,
+                                `• Apoyo MIPYMES: ${Math.floor(Math.random() * 20 + 25)} empresas beneficiadas`,
+                                `• Salud comunitaria: ${Math.floor(Math.random() * 5 + 3)} campañas/año`,
+                                ``,
+                                `Seguridad y Bienestar:`,
+                                `• Índice seguridad: ${Math.floor(Math.random() * 20 + 75)}/100 vs ${Math.floor(Math.random() * 20 + 60)}/100 ciudad`,
+                                `• Accidentes laborales: ${Math.floor(Math.random() * 3)} casos/año`,
+                                `• Capacitaciones seguridad: 100% empleados certificados`,
+                                `• Accesibilidad universal: Cumplimiento NTC 4141`,
+                                `• Participación comunitaria: ${Math.floor(Math.random() * 50 + 80)}% asistencia asambleas`
+                            ];
+                            
+                            socialMetrics.forEach(line => {
+                                if (yPos > 250) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 4;
+                            });
+                            
+                            if (yPos > 200) {
+                                doc.addPage();
+                                yPos = 20;
+                            }
+
+                            // CONCLUSIONES Y RECOMENDACIONES
+                            doc.setFontSize(14);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text('V. CONCLUSIONES Y RECOMENDACIONES IA', 20, yPos);
+                            yPos += 10;
+
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            
+                            const conclusions = [
+                                `FORTALEZAS IDENTIFICADAS:`,
+                                `• Performance ESG consistentemente superior al benchmark sectorial`,
+                                `• Sistema de verificación automática con 99.2% precisión`,
+                                `• Cumplimiento proactivo normativas ambientales y sociales`,
+                                `• Impacto comunitario medible y significativo`,
+                                `• Tecnología IoT proporcionando datos granulares tiempo real`,
+                                ``,
+                                `OPORTUNIDADES DE MEJORA (IA Recommendations):`,
+                                `• Acelerar transición energética: +15 puntos ESG potenciales`,
+                                `• Expandir programas juventud: ROI social 3.2x estimado`,
+                                `• Implementar economia circular: -20% residuos proyectado`,
+                                `• Certificación B-Corp: acceso nuevos mercados ESG`,
+                                ``,
+                                `PROYECCIONES 2026-2027:`,
+                                `• Score ESG objetivo: ${Math.floor(Math.random() * 10 + 90)}/100`,
+                                `• ROI ESG premium: +${Math.floor(Math.random() * 8 + 15)}% vs desarrollo tradicional`,
+                                `• Acceso fondos verdes: $${Math.floor(Math.random() * 50 + 150)}M+ pipeline`,
+                                `• Replicabilidad modelo: 3-5 proyectos adicionales`,
+                                ``,
+                                `PRÓXIMOS HITOS CRÍTICOS:`,
+                                `• Q2 2026: Auditoría tercera parte certificaciones internacionales`,
+                                `• Q3 2026: Implementación blockchain certificaciones inmutable`,
+                                `• Q4 2026: Expansión modelo PentOS a mercados LATAM`,
+                                `• Q1 2027: IPO con componente ESG diferenciador estratégico`
+                            ];
+                            
+                            conclusions.forEach(line => {
+                                if (yPos > 250) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 4;
+                            });
+                            yPos += 10;
+
+                            // FOOTER INFORMATION
+                            if (yPos > 220) {
+                                doc.addPage();
+                                yPos = 20;
+                            }
+                            
+                            doc.setFontSize(10);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text('INFORMACIÓN CONTACTO Y SOPORTE', 20, yPos);
+                            yPos += 8;
+                            
+                            doc.setFontSize(9);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            
+                            const contact = [
+                                `PentOS Platform - Platform ESG Next Transparency Operations System`,
+                                `Medellín, Colombia | Sede Principal: Zona Rosa, El Poblado`,
+                                ``,
+                                `CONTACTOS EJECUTIVOS:`,
+                                `• Plataforma: platform@pentos.co | +57 (4) 123-4567`,
+                                `• Soporte Técnico 24/7: soporte@pentos.co | WhatsApp: +57 300 123 4567`,
+                                `• Relaciones Inversionistas: investors@pentos.co`,
+                                `• Partnerships: partnerships@pentos.co`,
+                                ``,
+                                `RECURSOS ADICIONALES:`,
+                                `• Portal web: www.pentos.co`,
+                                `• Dashboard live: platform.pentos.co`,
+                                `• Documentación API: docs.pentos.co`,
+                                `• Soporte: support.pentos.co`,
+                                ``,
+                                `CERTIFICACIONES Y AVALES:`,
+                                `• ISO 27001:2013 (Seguridad Información)`,
+                                `• SOC 2 Type II (Controles Seguridad)`,
+                                `• GDPR Compliance (Protección Datos)`,
+                                `• Cámara de Comercio Medellín: Matricula #123456`,
+                                ``,
+                                `---`,
+                                `Documento generado automáticamente | ${new Date().toISOString()}`,
+                                `PentOS v3.1 LIVE | Precisión: 99.2% | Algoritmo propietario`,
+                                `"Haciendo visible lo invisible en el desarrollo sostenible"`,
+                            ];
+                            
+                            contact.forEach(line => {
+                                if (yPos > 275) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 4;
+                            });
 
                             // Save PDF
-                            const fileName = `PentOS_${projectName.replace(/\s+/g, '_')}.pdf`;
+                            const fileName = `PentOS_${projectName.replace(/\s+/g, '_')}_${currentDate.getTime()}.pdf`;
                             doc.save(fileName);
 
                             // Success
                             setTimeout(() => {
-                                this.showNotification('✅ PDF Generado', `Reporte ${projectName} descargado exitosamente`);
+                                this.showNotification('✅ PDF Generado', `Reporte completo ${projectName} descargado exitosamente`);
                                 if (report) report.generating = false;
                             }, 1000);
 
@@ -2481,10 +3077,45 @@
                             if (report) report.generating = false;
                             
                             setTimeout(() => {
-                                this.showNotification('✅ PDF Simulado', 'Generación PDF funciona correctamente en producción');
+                                this.showNotification('✅ PDF Simulado', 'Generación PDF completa funciona en producción');
                                 
-                                // Show demo alert
-                                alert(`📄 DEMO: PDF GENERADO EXITOSAMENTE\n\n✅ Proyecto: ${projectName}\n📅 Fecha: ${new Date().toLocaleDateString('es-ES')}\n\n📋 Contenido incluido:\n• Datos verificados tiempo real\n• Metodología ESG completa\n• Certificación automática\n• Fuentes oficiales\n• Contacto y soporte\n\n💡 En producción se descargaría archivo PDF real`);
+                                // Show comprehensive demo content
+                                const demoContent = `📄 REPORTE ESG COMPLETO - ${projectName}
+
+📋 CONTENIDO INCLUIDO (${Math.floor(Math.random() * 3 + 8)} páginas):
+
+I. RESUMEN EJECUTIVO
+• Score ESG ${Math.floor(Math.random() * 15 + 85)}/100 con tendencia
+• Benchmark sector y comparativa regional
+• Certificaciones internacionales activas
+
+II. METODOLOGÍA ESG PENTOS  
+• Environmental (40%): Emisiones, energía, agua, residuos
+• Social (35%): Empleos, comunidad, seguridad, cadena suministro
+• Governance (25%): Transparencia, compliance, ética, riesgos
+
+III. FUENTES VERIFICACIÓN AUTOMÁTICA
+• API DANE: ${Math.floor(Math.random() * 500 + 1000)} verificaciones/mes
+• IoT Network: ${Math.floor(Math.random() * 100 + 120)} sensores activos
+• API Alcaldía: ${Math.floor(Math.random() * 100 + 200)} permisos verificados
+• API Policía: ${Math.floor(Math.random() * 50 + 80)} indicadores seguridad
+
+IV. MÉTRICAS DETALLADAS
+• Emisiones GEI: Scopes 1,2,3 con reducción -${Math.floor(Math.random() * 15 + 20)}%
+• Empleos: ${Math.floor(Math.random() * 100 + 150)} directos + ${Math.floor(Math.random() * 50 + 80)} indirectos
+• Inversión social: $${Math.floor(Math.random() * 500 + 1000)}K anuales
+• ${Math.floor(Math.random() * 1000 + 1500)} beneficiarios comunitarios
+
+V. RECOMENDACIONES IA
+• Proyecciones 2026-2027 
+• Oportunidades mejora ESG
+• ROI premium estimado +${Math.floor(Math.random() * 8 + 15)}%
+• Próximos hitos críticos
+
+✅ En producción se descargaría PDF real de ${Math.floor(Math.random() * 3 + 8)} páginas
+📞 Soporte: platform@pentos.co | +57 300 123 4567`;
+
+                                alert(demoContent);
                             }, 1000);
                         }
                     }, 2000);
@@ -2530,6 +3161,24 @@
 
                 closeAIChatModal() {
                     this.showAIChat = false;
+                },
+
+                // Project Modal Methods
+                showProjectDetails(project) {
+                    this.selectedProject = project;
+                    this.showProjectModal = true;
+                    
+                    // Initialize icons after modal opens
+                    this.$nextTick(() => {
+                        if (typeof lucide !== 'undefined') {
+                            lucide.createIcons();
+                        }
+                    });
+                },
+
+                closeProjectModal() {
+                    this.showProjectModal = false;
+                    this.selectedProject = null;
                 },
 
                 addAIMessage(content, suggestions = []) {
