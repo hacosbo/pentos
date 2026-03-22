@@ -8,7 +8,7 @@
     <!-- Roboto Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Vue.js 3 from CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -24,7 +24,7 @@
     
     <style>
         :root {
-            /* Light Theme - Professional ESG Colors */
+            /* Light Theme ESG Colors - Figma exact */
             --primary-green: #10b981;
             --primary-green-dark: #059669;
             --primary-green-light: #34d399;
@@ -60,13 +60,6 @@
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            
-            /* Alpha Colors */
-            --green-alpha: rgba(16, 185, 129, 0.1);
-            --blue-alpha: rgba(59, 130, 246, 0.1);
-            --purple-alpha: rgba(139, 92, 246, 0.1);
-            --red-alpha: rgba(239, 68, 68, 0.1);
-            --yellow-alpha: rgba(245, 158, 11, 0.1);
         }
 
         * {
@@ -77,37 +70,88 @@
 
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: var(--bg-secondary);
+            background: var(--bg-secondary);
             color: var(--text-primary);
             font-size: 14px;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ===== LIVE ANIMATIONS ===== */
+        @keyframes pulse-glow {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 20px 10px rgba(16, 185, 129, 0);
+            }
+        }
+
+        @keyframes counter-flash {
+            0% { color: var(--text-primary); transform: scale(1); }
+            50% { color: var(--primary-green); transform: scale(1.1); }
+            100% { color: var(--text-primary); transform: scale(1); }
+        }
+
+        @keyframes slide-in-notification {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .live-pulse {
+            animation: pulse-glow 2s infinite;
+        }
+
+        .counter-animate {
+            animation: counter-flash 1s ease-in-out;
         }
 
         .app-container {
             display: flex;
             min-height: 100vh;
-            overflow: hidden;
         }
 
-        /* Sidebar */
+        /* ===== SIDEBAR - FIGMA STYLE ===== */
         .sidebar {
             width: 260px;
             background: var(--bg-primary);
             border-right: 1px solid var(--border-primary);
             display: flex;
             flex-direction: column;
-            position: sticky;
-            top: 0;
+            position: fixed;
             height: 100vh;
             box-shadow: var(--shadow-sm);
+            z-index: 100;
         }
 
         .logo-section {
             padding: 24px 20px;
             border-bottom: 1px solid var(--border-secondary);
-            background: var(--bg-accent);
+            background: linear-gradient(135deg, var(--bg-accent), var(--bg-primary));
         }
 
         .logo {
@@ -125,34 +169,36 @@
             align-items: center;
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 12px var(--green-alpha);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            animation: pulse-glow 3s infinite;
         }
 
         .logo-text h1 {
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
             color: var(--text-primary);
             margin: 0;
+            letter-spacing: -0.5px;
         }
 
         .logo-text p {
             font-size: 11px;
             color: var(--primary-green);
-            font-weight: 600;
+            font-weight: 700;
             margin: 2px 0 0 0;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .nav-section {
             flex: 1;
-            padding: 20px 16px;
+            padding: 24px 16px;
         }
 
         .nav-header {
             font-size: 11px;
             color: var(--text-muted);
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 16px;
@@ -162,44 +208,55 @@
         .nav-items {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .nav-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 14px 16px;
-            border-radius: 10px;
+            padding: 16px 16px;
+            border-radius: 12px;
             color: var(--text-secondary);
-            text-decoration: none;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             border: none;
             background: none;
             width: 100%;
             text-align: left;
             font-family: inherit;
             font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
         }
 
         .nav-item:hover {
-            background-color: var(--bg-hover);
+            background: var(--bg-hover);
             color: var(--text-primary);
+            transform: translateX(4px);
         }
 
         .nav-item.active {
-            background: var(--green-alpha);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
             color: var(--primary-green);
-            font-weight: 600;
-            border: 1px solid var(--border-accent);
-        }
-
-        .nav-item i {
-            width: 18px;
-            height: 18px;
-            stroke-width: 2;
+            font-weight: 700;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         .status-section {
@@ -224,12 +281,7 @@
             height: 8px;
             background: var(--primary-green);
             border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
+            animation: pulse-glow 2s infinite;
         }
 
         .status-text {
@@ -272,119 +324,137 @@
             color: var(--text-tertiary);
         }
 
-        /* Main Container */
+        /* ===== MAIN CONTAINER ===== */
         .main-container {
             flex: 1;
+            margin-left: 260px;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
         }
 
+        /* ===== HEADER ===== */
         .header {
             background: var(--bg-primary);
             border-bottom: 1px solid var(--border-primary);
-            padding: 20px 24px;
+            padding: 24px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 50;
         }
 
         .header-left h1 {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 4px;
+            letter-spacing: -0.5px;
         }
 
         .header-left p {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-secondary);
+            font-weight: 500;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 20px;
         }
 
         .live-indicator {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 12px;
-            background: var(--green-alpha);
-            border: 1px solid var(--border-accent);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
             color: var(--primary-green);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
         }
 
         .notification-badge {
-            background: var(--error);
+            background: linear-gradient(135deg, var(--error), #dc2626);
             color: white;
-            padding: 6px 10px;
-            border-radius: 16px;
+            padding: 8px 12px;
+            border-radius: 20px;
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
+            position: relative;
+            animation: bounce-in 0.6s ease-out;
         }
 
+        /* ===== CONTENT AREA ===== */
         .content-area {
-            flex: 1;
-            overflow-y: auto;
-            padding: 24px;
+            padding: 32px;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
-            padding-bottom: 100px;
+            animation: fade-in-up 0.6s ease-out;
         }
 
+        /* ===== TABS ===== */
         .tab-content {
             display: none;
-            animation: fadeIn 0.3s ease-in-out;
         }
 
         .tab-content.active {
             display: block;
+            animation: fade-in-up 0.5s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* ===== CHART SECTION ===== */
         .chart-section {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 28px;
+            border-radius: 16px;
+            padding: 32px;
             margin-bottom: 32px;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--info), var(--purple));
         }
 
         .chart-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
 
         .chart-title {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .chart-subtitle {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-tertiary);
+            font-weight: 500;
         }
 
         .chart-legend {
             display: flex;
-            gap: 20px;
+            gap: 24px;
         }
 
         .legend-item {
@@ -394,22 +464,25 @@
         }
 
         .legend-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .legend-label {
             font-size: 14px;
             color: var(--text-secondary);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .chart-container {
-            height: 300px;
+            height: 320px;
             position: relative;
         }
 
+        /* ===== PROJECTS GRID ===== */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -419,63 +492,82 @@
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow-sm);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-green);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-xl);
-            border-color: var(--border-hover);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .project-card:hover::before {
+            transform: scaleY(1);
         }
 
         .project-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .project-info h3 {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .project-location {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-tertiary);
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
+            font-weight: 500;
         }
 
         .project-score {
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 14px;
+            padding: 12px 16px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 16px;
+            min-width: 60px;
+            text-align: center;
         }
 
         .score-excellent {
-            background: var(--green-alpha);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
             color: var(--primary-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         .score-good {
-            background: var(--yellow-alpha);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
             color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
 
-        .score-warning {
-            background: var(--red-alpha);
-            color: var(--error);
-        }
-
+        /* ===== ESG BARS ===== */
         .esg-bars {
             margin: 20px 0;
         }
@@ -491,65 +583,68 @@
             font-size: 12px;
             color: var(--text-tertiary);
             width: 16px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .esg-progress {
             flex: 1;
-            height: 6px;
+            height: 8px;
             background: var(--bg-tertiary);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .esg-fill {
             height: 100%;
-            border-radius: 3px;
-            transition: width 0.8s ease;
+            border-radius: 4px;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(90deg, currentColor, rgba(255,255,255,0.2));
         }
 
         .esg-value {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-secondary);
-            font-weight: 600;
-            width: 24px;
+            font-weight: 700;
+            width: 30px;
             text-align: right;
         }
 
         .project-btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: var(--bg-tertiary);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
+            border-radius: 10px;
             color: var(--text-primary);
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             font-family: inherit;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .project-btn:hover {
             background: var(--primary-green);
             border-color: var(--primary-green);
             color: white;
+            transform: translateY(-2px);
         }
 
+        /* ===== METRICS GRID ===== */
         .metrics-grid, .verification-metrics {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 24px;
             margin-bottom: 32px;
         }
 
         .metric-card {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 24px;
+            border-radius: 16px;
+            padding: 28px;
             box-shadow: var(--shadow-sm);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -565,31 +660,45 @@
         }
 
         .metric-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
 
+        .metric-card.updating {
+            background: linear-gradient(45deg, var(--bg-card) 25%, rgba(16, 185, 129, 0.05) 50%, var(--bg-card) 75%);
+            background-size: 200% 200%;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
         .metric-value {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 900;
             color: var(--text-primary);
             margin-bottom: 8px;
             font-variant-numeric: tabular-nums;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .metric-value.live-update {
+            animation: counter-flash 1s ease-in-out;
         }
 
         .metric-label {
             color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
         .metric-change {
             font-size: 12px;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 12px;
-            display: inline-block;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .metric-change.positive {
@@ -597,207 +706,271 @@
             background: rgba(34, 197, 94, 0.1);
         }
 
-        .metric-change.negative {
-            color: var(--error);
-            background: var(--red-alpha);
+        .metric-change.live {
+            animation: pulse-glow 2s infinite;
         }
 
+        /* ===== API GRID ===== */
         .api-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 24px;
             margin-bottom: 32px;
         }
 
         .api-item {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 24px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 20px;
             box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .api-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .api-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--green-alpha);
-            border-radius: 8px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-green);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .api-item:hover .api-icon {
+            background: var(--primary-green);
+            color: white;
+            transform: scale(1.1);
         }
 
         .api-info h4 {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .api-status {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--primary-green);
-            font-weight: 500;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
 
         .api-details {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-tertiary);
+            font-weight: 500;
         }
 
+        /* ===== VERIFICATION LOG ===== */
         .verification-log {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 24px;
+            border-radius: 16px;
+            padding: 28px;
             box-shadow: var(--shadow-sm);
         }
 
         .log-header {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .log-live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary-green);
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .log-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 0;
+            gap: 16px;
+            padding: 16px 0;
             border-bottom: 1px solid var(--border-secondary);
+            transition: all 0.3s ease;
         }
 
         .log-item:last-child {
             border-bottom: none;
         }
 
+        .log-item.new-entry {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
+            border-left: 4px solid var(--primary-green);
+            padding-left: 16px;
+            border-radius: 8px;
+            animation: slide-in-notification 0.6s ease-out;
+        }
+
         .log-time {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--primary-green);
-            font-weight: 600;
-            width: 50px;
+            font-weight: 700;
+            width: 60px;
         }
 
         .log-project {
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             color: var(--text-primary);
-            width: 100px;
+            width: 120px;
         }
 
         .log-description {
             flex: 1;
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ===== REPORTS ===== */
+        .reports-list {
+            margin-bottom: 32px;
         }
 
         .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 24px;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 28px;
             color: var(--text-primary);
-        }
-
-        .reports-list {
-            margin-bottom: 32px;
         }
 
         .report-item {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 16px;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
             box-shadow: var(--shadow-sm);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .report-item:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
         }
 
         .report-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .report-score {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
+            font-weight: 800;
+            font-size: 16px;
         }
 
         .report-info {
             flex: 1;
-            margin-left: 16px;
+            margin-left: 20px;
         }
 
         .report-info h3 {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .report-meta {
             font-size: 12px;
             color: var(--text-tertiary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .report-description {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.4;
+            line-height: 1.5;
             margin-bottom: 16px;
+            font-weight: 500;
         }
 
         .report-status {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--primary-green);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .report-actions {
             display: flex;
             gap: 12px;
+            margin-top: 20px;
         }
 
         .btn {
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             border: none;
             font-family: inherit;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            text-transform: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .btn.loading .btn-spinner {
+            animation: spin 1s linear infinite;
         }
 
         .btn-primary {
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
             color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
         }
 
         .btn-primary:hover {
-            background: var(--primary-green-dark);
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, var(--primary-green-dark), var(--primary-green));
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
         }
 
         .btn-secondary {
@@ -808,70 +981,135 @@
 
         .btn-secondary:hover {
             border-color: var(--border-hover);
+            background: var(--bg-hover);
         }
 
+        /* ===== AI SUMMARY ===== */
+        .ai-summary {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--info), var(--purple), var(--primary-green));
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ai-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .ai-content {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .ai-content strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* ===== NOTIFICATIONS ===== */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 400px;
+        }
+
+        .notification {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-left: 4px solid var(--primary-green);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            box-shadow: var(--shadow-lg);
+            animation: slide-in-notification 0.5s ease-out;
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .notification-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .notification-content {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ===== GENERATION STATS ===== */
         .generation-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 24px;
             margin-bottom: 32px;
         }
 
         .stat-item {
             background: var(--bg-card);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 20px;
             text-align: center;
             box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.03);
         }
 
         .stat-value {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            transition: all 0.4s ease;
+        }
+
+        .stat-value.live-update {
+            animation: counter-flash 1s ease-in-out;
         }
 
         .stat-label {
             font-size: 12px;
             color: var(--text-secondary);
-        }
-
-        .ai-summary {
-            background: var(--bg-card);
-            border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .ai-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .ai-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .ai-content {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .ai-content strong {
-            color: var(--text-primary);
             font-weight: 600;
         }
 
-        /* Bottom Navigation */
+        /* ===== BOTTOM NAVIGATION (MOBILE) ===== */
         .bottom-nav {
             display: none;
             position: fixed;
@@ -913,13 +1151,17 @@
 
         .bottom-nav-label {
             font-size: 10px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .sidebar {
                 display: none;
+            }
+            
+            .main-container {
+                margin-left: 0;
             }
             
             .bottom-nav {
@@ -927,8 +1169,7 @@
             }
             
             .content-area {
-                padding: 16px;
-                padding-bottom: 100px;
+                padding: 20px 16px 100px;
             }
             
             .metrics-grid,
@@ -944,10 +1185,6 @@
             .api-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .generation-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
 
             .chart-header {
                 flex-direction: column;
@@ -956,47 +1193,47 @@
             }
 
             .header {
-                padding: 16px;
+                padding: 16px 20px;
             }
 
             .header-left h1 {
-                font-size: 20px;
+                font-size: 22px;
             }
 
-            .report-header {
-                flex-direction: column;
-                gap: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .metrics-grid,
-            .verification-metrics,
             .generation-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .content-area {
-                padding: 12px;
-                padding-bottom: 100px;
-            }
-
-            .chart-legend {
-                display: none;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-
+        /* ===== UTILITIES ===== */
         .hidden { 
             display: none !important; 
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-primary);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
         }
     </style>
 </head>
 <body>
     <div id="app" class="app-container">
+        <!-- Notification Container -->
+        <div class="notification-container" id="notifications"></div>
+
         <!-- Sidebar -->
         <aside class="sidebar" v-show="!isMobile">
             <div class="logo-section">
@@ -1012,7 +1249,7 @@
             </div>
 
             <nav class="nav-section">
-                <div class="nav-header">Navegación</div>
+                <div class="nav-header">Plataforma ESG</div>
                 <div class="nav-items">
                     <button 
                         v-for="tab in tabs" 
@@ -1055,8 +1292,8 @@
                         <div class="pulse-dot"></div>
                         En vivo
                     </div>
-                    <div class="notification-badge" v-if="metrics.alerts > 0">
-                        {{ metrics.alerts }} alertas
+                    <div class="notification-badge" v-if="liveData.alertsCount > 0">
+                        {{ liveData.alertsCount }} alertas
                     </div>
                 </div>
             </header>
@@ -1066,7 +1303,7 @@
                 <!-- Dashboard Tab -->
                 <div class="tab-content" :class="{ active: currentTab === 'dashboard' }">
                     <!-- Chart Section -->
-                    <div class="chart-section fade-in">
+                    <div class="chart-section">
                         <div class="chart-header">
                             <div>
                                 <div class="chart-title">Tendencia ESG</div>
@@ -1085,7 +1322,7 @@
                     </div>
 
                     <!-- Projects Grid -->
-                    <div class="projects-grid fade-in">
+                    <div class="projects-grid">
                         <div 
                             v-for="project in projects" 
                             :key="project.id"
@@ -1096,7 +1333,7 @@
                                 <div class="project-info">
                                     <h3>{{ project.name }}</h3>
                                     <div class="project-location">
-                                        <i data-lucide="map-pin" style="width: 12px; height: 12px;"></i>
+                                        <i data-lucide="map-pin" style="width: 14px; height: 14px;"></i>
                                         {{ project.location }}
                                     </div>
                                 </div>
@@ -1122,20 +1359,23 @@
                 <!-- Verification Tab -->
                 <div class="tab-content" :class="{ active: currentTab === 'verification' }">
                     <!-- Verification Metrics -->
-                    <div class="verification-metrics fade-in">
+                    <div class="verification-metrics">
                         <div 
                             v-for="metric in verificationMetrics" 
                             :key="metric.id"
                             class="metric-card"
+                            :class="{ updating: metric.updating }"
                         >
-                            <div class="metric-value">{{ metric.value }}</div>
+                            <div class="metric-value" :class="{ 'live-update': metric.updating }">
+                                {{ metric.displayValue }}
+                            </div>
                             <div class="metric-label">{{ metric.label }}</div>
-                            <div class="metric-change positive">{{ metric.change }}</div>
+                            <div class="metric-change positive live">{{ metric.change }}</div>
                         </div>
                     </div>
 
                     <!-- API Grid -->
-                    <div class="api-grid fade-in">
+                    <div class="api-grid">
                         <div 
                             v-for="api in apis" 
                             :key="api.id"
@@ -1153,14 +1393,20 @@
                     </div>
 
                     <!-- Verification Log -->
-                    <div class="verification-log fade-in">
-                        <div class="log-header">Log de Verificaciones</div>
+                    <div class="verification-log">
+                        <div class="log-header">
+                            <span>Log de Verificaciones</span>
+                            <div class="log-live-badge">
+                                <div class="pulse-dot" style="width: 6px; height: 6px;"></div>
+                                Live
+                            </div>
+                        </div>
                         <div>
                             <div 
                                 v-for="log in verificationLogs" 
                                 :key="log.id"
                                 class="log-item"
-                                :style="log.highlight ? 'background-color: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981; padding-left: 12px;' : ''"
+                                :class="{ 'new-entry': log.isNew }"
                             >
                                 <div class="log-time">{{ log.time }}</div>
                                 <div class="log-project">{{ log.project }}</div>
@@ -1176,7 +1422,7 @@
                 <!-- Reports Tab -->
                 <div class="tab-content" :class="{ active: currentTab === 'reports' }">
                     <!-- Reports List -->
-                    <div class="reports-list fade-in">
+                    <div class="reports-list">
                         <h2 class="section-title">Reportes Generados</h2>
                         
                         <div 
@@ -1196,12 +1442,13 @@
                                 </div>
                             </div>
                             <div class="report-actions">
-                                <button class="btn btn-primary" @click="generatePDF(report.project)">
-                                    <i data-lucide="download" style="width: 12px; height: 12px;"></i>
-                                    PDF
+                                <button class="btn btn-primary" @click="generatePDF(report.project, $event)" :class="{ loading: report.generating }">
+                                    <i v-if="report.generating" class="btn-spinner" data-lucide="loader-2" style="width: 14px; height: 14px;"></i>
+                                    <i v-else data-lucide="download" style="width: 14px; height: 14px;"></i>
+                                    {{ report.generating ? 'Generando...' : 'PDF' }}
                                 </button>
                                 <button class="btn btn-secondary" @click="viewOnline(report.projectId)">
-                                    <i data-lucide="external-link" style="width: 12px; height: 12px;"></i>
+                                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
                                     Ver Online
                                 </button>
                             </div>
@@ -1209,26 +1456,26 @@
                     </div>
 
                     <!-- Generation Stats -->
-                    <div class="generation-stats fade-in">
+                    <div class="generation-stats">
                         <div 
                             v-for="stat in stats" 
                             :key="stat.id"
                             class="stat-item"
                         >
-                            <div class="stat-value">{{ stat.value }}</div>
+                            <div class="stat-value" :class="{ 'live-update': stat.updating }">{{ stat.displayValue }}</div>
                             <div class="stat-label">{{ stat.label }}</div>
                         </div>
                     </div>
 
                     <!-- AI Summary -->
-                    <div class="ai-summary fade-in">
+                    <div class="ai-summary">
                         <div class="ai-header">
                             <i data-lucide="brain" style="width: 20px; height: 20px; color: var(--info);"></i>
                             <div class="ai-title">{{ aiSummary.title }}</div>
                         </div>
                         <div class="ai-content" v-html="aiSummary.content"></div>
                         <button class="btn btn-primary" @click="showFullAIAnalysis()" style="width: 100%;">
-                            <i data-lucide="arrow-right" style="width: 12px; height: 12px;"></i>
+                            <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
                             Ver Análisis Completo
                         </button>
                     </div>
@@ -1263,6 +1510,18 @@
                     isMobile: window.innerWidth <= 768,
                     esgChart: null,
                     
+                    // Live data counters
+                    liveData: {
+                        verificationsToday: 156,
+                        alertsCount: 3,
+                        empleosVerificados: 1247,
+                        reportesGenerados: 47,
+                        inversionistasActivos: 12,
+                        satisfaccionPromedio: 4.8,
+                        precisionTasa: 99.2,
+                        tiempoPromedio: 12
+                    },
+
                     // User data
                     user: {
                         name: 'Demo Inversionista',
@@ -1291,12 +1550,6 @@
                             icon: 'file-text' 
                         }
                     ],
-
-                    // Metrics
-                    metrics: {
-                        alerts: 3,
-                        verifications: 156
-                    },
 
                     // Chart data
                     chartData: {
@@ -1357,24 +1610,52 @@
 
                     // Verification data
                     verificationMetrics: [
-                        { id: 1, value: '1,247', label: 'Empleos Verificados', change: 'En tiempo real' },
-                        { id: 2, value: '156', label: 'Verificaciones', change: 'Completadas hoy' },
-                        { id: 3, value: '12s', label: 'Tiempo Promedio', change: 'Ultra rápido' },
-                        { id: 4, value: '99.2%', label: 'Tasa de Precisión', change: 'APIs oficiales' }
+                        { 
+                            id: 1, 
+                            value: 1247, 
+                            displayValue: '1,247',
+                            label: 'Empleos Verificados', 
+                            change: 'En tiempo real', 
+                            updating: false 
+                        },
+                        { 
+                            id: 2, 
+                            value: 156, 
+                            displayValue: '156',
+                            label: 'Verificaciones', 
+                            change: 'Completadas hoy', 
+                            updating: false 
+                        },
+                        { 
+                            id: 3, 
+                            value: 12, 
+                            displayValue: '12s',
+                            label: 'Tiempo Promedio', 
+                            change: 'Ultra rápido', 
+                            updating: false 
+                        },
+                        { 
+                            id: 4, 
+                            value: 99.2, 
+                            displayValue: '99.2%',
+                            label: 'Tasa de Precisión', 
+                            change: 'APIs oficiales', 
+                            updating: false 
+                        }
                     ],
 
                     apis: [
                         {
                             id: 1,
                             name: 'API DANE',
-                            status: 'Datos de empleo: recursos',
+                            status: 'Datos de empleo y recursos',
                             details: '1,247 empleos | 28hrs | 99.9%',
                             icon: 'users'
                         },
                         {
                             id: 2,
                             name: 'Sensores IoT',
-                            status: 'Red de monitoreo ambiental',
+                            status: 'Red monitoreo ambiental',
                             details: '8,640 sensores | 12min | 100%',
                             icon: 'radio'
                         },
@@ -1388,7 +1669,7 @@
                         {
                             id: 4,
                             name: 'API Policía Nal.',
-                            status: 'Índices de seguridad pública',
+                            status: 'Índices seguridad pública',
                             details: '89 indicadores | 1-43min | 98.7%',
                             icon: 'shield'
                         }
@@ -1402,7 +1683,7 @@
                             description: '142 empleos activos confirmados contra base DANE',
                             icon: 'check-circle',
                             color: '#10b981',
-                            highlight: false
+                            isNew: false
                         },
                         {
                             id: 2,
@@ -1411,7 +1692,7 @@
                             description: 'Consumo energético dentro del rango óptimo - IoT',
                             icon: 'check-circle',
                             color: '#10b981',
-                            highlight: false
+                            isNew: false
                         },
                         {
                             id: 3,
@@ -1420,7 +1701,7 @@
                             description: 'Incidencia CO2 por encima límite esperado +12%',
                             icon: 'alert-triangle',
                             color: '#f59e0b',
-                            highlight: false
+                            isNew: false
                         },
                         {
                             id: 4,
@@ -1429,7 +1710,7 @@
                             description: 'Impacto social sostenido: $2.8M inversión comunitaria',
                             icon: 'check-circle',
                             color: '#10b981',
-                            highlight: false
+                            isNew: false
                         },
                         {
                             id: 5,
@@ -1438,7 +1719,7 @@
                             description: '370 puestos de trabajo verificados con datos Alcaldía',
                             icon: 'check-circle',
                             color: '#10b981',
-                            highlight: false
+                            isNew: false
                         }
                     ],
 
@@ -1454,7 +1735,8 @@
                             status: '✓ Todos los objetivos cumplidos',
                             statusColor: '#10b981',
                             project: 'Mixy Mall Centro',
-                            projectId: 'mixy'
+                            projectId: 'mixy',
+                            generating: false
                         },
                         {
                             id: 2,
@@ -1466,7 +1748,8 @@
                             status: '⚠ 3 objetivos requieren atención',
                             statusColor: '#f59e0b',
                             project: 'Eco Towers Laureles',
-                            projectId: 'eco'
+                            projectId: 'eco',
+                            generating: false
                         },
                         {
                             id: 3,
@@ -1478,15 +1761,16 @@
                             status: '✓ Desarrollo destacado en portafolio',
                             statusColor: '#10b981',
                             project: 'Verde Parque Norte',
-                            projectId: 'verde'
+                            projectId: 'verde',
+                            generating: false
                         }
                     ],
 
                     stats: [
-                        { id: 1, value: '47', label: 'Reportes este mes' },
-                        { id: 2, value: '12', label: 'Inversionistas activos' },
-                        { id: 3, value: '100%', label: 'Tiempo online' },
-                        { id: 4, value: '4.8/5', label: 'Satisfacción promedio' }
+                        { id: 1, value: 47, displayValue: '47', label: 'Reportes este mes', updating: false },
+                        { id: 2, value: 12, displayValue: '12', label: 'Inversionistas activos', updating: false },
+                        { id: 3, value: 100, displayValue: '100%', label: 'Tiempo online', updating: false },
+                        { id: 4, value: 4.8, displayValue: '4.8/5', label: 'Satisfacción promedio', updating: false }
                     ],
 
                     aiSummary: {
@@ -1557,7 +1841,7 @@
                                     pointHoverRadius: 8,
                                     pointBackgroundColor: '#10b981',
                                     pointBorderColor: '#fff',
-                                    pointBorderWidth: 2,
+                                    pointBorderWidth: 3,
                                     fill: true,
                                     tension: 0.4
                                 },
@@ -1571,7 +1855,7 @@
                                     pointHoverRadius: 8,
                                     pointBackgroundColor: '#3b82f6',
                                     pointBorderColor: '#fff',
-                                    pointBorderWidth: 2,
+                                    pointBorderWidth: 3,
                                     fill: true,
                                     tension: 0.4
                                 },
@@ -1585,7 +1869,7 @@
                                     pointHoverRadius: 8,
                                     pointBackgroundColor: '#8b5cf6',
                                     pointBorderColor: '#fff',
-                                    pointBorderWidth: 2,
+                                    pointBorderWidth: 3,
                                     fill: true,
                                     tension: 0.4
                                 }
@@ -1594,6 +1878,10 @@
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
+                            animation: {
+                                duration: 2000,
+                                easing: 'easeInOutCubic'
+                            },
                             interaction: {
                                 intersect: false,
                                 mode: 'index'
@@ -1608,14 +1896,14 @@
                                     bodyColor: '#cbd5e1',
                                     borderColor: '#334155',
                                     borderWidth: 1,
-                                    cornerRadius: 8,
-                                    padding: 12,
+                                    cornerRadius: 12,
+                                    padding: 16,
                                     titleFont: {
-                                        size: 12,
+                                        size: 14,
                                         weight: 'bold'
                                     },
                                     bodyFont: {
-                                        size: 11
+                                        size: 13
                                     },
                                     callbacks: {
                                         title: function(context) {
@@ -1635,8 +1923,9 @@
                                     ticks: {
                                         color: '#94a3b8',
                                         font: {
-                                            size: 11,
-                                            family: 'Roboto'
+                                            size: 12,
+                                            family: 'Roboto',
+                                            weight: '600'
                                         }
                                     }
                                 },
@@ -1653,8 +1942,9 @@
                                     ticks: {
                                         color: '#94a3b8',
                                         font: {
-                                            size: 11,
-                                            family: 'Roboto'
+                                            size: 12,
+                                            family: 'Roboto',
+                                            weight: '600'
                                         }
                                     }
                                 }
@@ -1753,106 +2043,158 @@
                     }
                 },
 
-                generatePDF(projectName) {
-                    if (typeof jsPDF === 'undefined') {
-                        alert(`📄 Generando PDF para ${projectName}...\n\n✅ Funcionalidades PDF:\n• Plantillas automáticas\n• Datos tiempo real verificados\n• Gráficos ESG dinámicos\n• Certificaciones oficiales\n\n🚀 PDF listo en 30 segundos`);
-                        return;
+                generatePDF(projectName, event) {
+                    // Find the report and set loading state
+                    const report = this.reports.find(r => r.project === projectName);
+                    if (report) {
+                        report.generating = true;
                     }
 
-                    const { jsPDF } = window.jsPDF;
-                    const doc = new jsPDF();
+                    this.showNotification('🔄 Generación PDF', `Iniciando generación para ${projectName}...`);
 
-                    // Header with branding
-                    doc.setFontSize(24);
-                    doc.setFont(undefined, 'bold');
-                    doc.setTextColor(16, 185, 129);
-                    doc.text('PentOS', 20, 25);
-
-                    doc.setFontSize(12);
-                    doc.setFont(undefined, 'normal');
-                    doc.setTextColor(71, 85, 105);
-                    doc.text('Platform ESG Next Transparency Operations System', 20, 32);
-
-                    // Project title
-                    doc.setFontSize(18);
-                    doc.setFont(undefined, 'bold');
-                    doc.setTextColor(15, 23, 42);
-                    doc.text(`Reporte ESG - ${projectName}`, 20, 50);
-
-                    // Meta info
-                    doc.setFontSize(10);
-                    doc.setFont(undefined, 'normal');
-                    doc.setTextColor(100, 116, 139);
-                    doc.text(`Generado: ${new Date().toLocaleDateString('es-ES', { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    })}`, 20, 60);
-
-                    // Content
-                    doc.setFontSize(14);
-                    doc.setFont(undefined, 'bold');
-                    doc.setTextColor(15, 23, 42);
-                    doc.text('Resumen Ejecutivo', 20, 80);
-
-                    doc.setFontSize(10);
-                    doc.setFont(undefined, 'normal');
-                    doc.setTextColor(71, 85, 105);
-
-                    const content = [
-                        'Este reporte ha sido generado automáticamente por PentOS utilizando',
-                        'datos verificados en tiempo real de fuentes oficiales colombianas.',
-                        '',
-                        '📊 FUENTES DE VERIFICACIÓN:',
-                        '• API DANE - Empleos y datos económicos oficiales',
-                        '• Red IoT - Monitoreo ambiental continuo (8,640 sensores)',
-                        '• API Alcaldía - Permisos y cumplimiento municipal',
-                        '• API Policía Nacional - Indicadores seguridad pública',
-                        '',
-                        '🎯 METODOLOGÍA ESG:',
-                        '• Environmental (40%): Emisiones, energía, residuos, agua',
-                        '• Social (35%): Empleos, inversión comunitaria, seguridad',
-                        '• Governance (25%): Transparencia, cumplimiento, reportes',
-                        '',
-                        '✅ CERTIFICACIÓN AUTOMÁTICA:',
-                        'Los datos han sido verificados automáticamente con una precisión',
-                        'del 99.2% vs auditorías manuales tradicionales. Algoritmo propietario',
-                        'valida información cada 15 minutos.',
-                        '',
-                        '🚀 VENTAJAS PLATAFORMA:',
-                        '• Verificación 24/7 sin intervención manual',
-                        '• Acceso garantizado a fondos ESG internacionales',
-                        '• ROI premium +15-18% vs desarrollo tradicional',
-                        '• Certificaciones automáticas LEED, BREEAM, etc.',
-                        '',
-                        'Para más información: platform@pentos.co | www.pentos.co'
-                    ];
-
-                    let yPos = 90;
-                    content.forEach(line => {
-                        if (yPos > 270) {
-                            doc.addPage();
-                            yPos = 20;
-                        }
-                        doc.text(line, 20, yPos);
-                        yPos += 5;
-                    });
-
-                    // Footer
-                    doc.setFontSize(8);
-                    doc.setTextColor(148, 163, 184);
-                    doc.text('PentOS - Haciendo visible lo invisible en el desarrollo sostenible', 20, 285);
-
-                    // Save
-                    const fileName = `PentOS_${projectName.replace(/\s+/g, '_')}_${new Date().getTime()}.pdf`;
-                    doc.save(fileName);
-
-                    // Success notification
+                    // Simulate processing time
                     setTimeout(() => {
-                        alert(`✅ PDF generado exitosamente!\n\n📄 ${projectName} - Reporte ESG\n📅 ${new Date().toLocaleDateString('es-ES')}\n📁 Archivo: ${fileName}\n\n🚀 Incluye:\n• Verificación automática datos\n• Metodología ESG detallada\n• Certificación de precisión\n• Información de contacto`);
-                    }, 500);
+                        try {
+                            const { jsPDF } = window.jsPDF;
+                            const doc = new jsPDF();
+
+                            // Header con branding mejorado
+                            doc.setFontSize(28);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(16, 185, 129);
+                            doc.text('PentOS', 20, 30);
+
+                            doc.setFontSize(12);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+                            doc.text('Platform ESG Next Transparency Operations System', 20, 38);
+
+                            // Line separator
+                            doc.setDrawColor(226, 232, 240);
+                            doc.setLineWidth(0.5);
+                            doc.line(20, 42, 190, 42);
+
+                            // Project title
+                            doc.setFontSize(20);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text(`Reporte ESG - ${projectName}`, 20, 55);
+
+                            // Date and verification badge
+                            const currentDate = new Date();
+                            doc.setFontSize(11);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(100, 116, 139);
+                            doc.text(`Generado: ${currentDate.toLocaleDateString('es-ES', { 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            })}`, 20, 65);
+
+                            // Verification badge
+                            doc.setFillColor(16, 185, 129);
+                            doc.roundedRect(120, 60, 50, 8, 2, 2, 'F');
+                            doc.setTextColor(255, 255, 255);
+                            doc.setFontSize(8);
+                            doc.setFont(undefined, 'bold');
+                            doc.text('✓ VERIFICADO AUTOMÁTICAMENTE', 122, 66);
+
+                            // Executive Summary
+                            doc.setFontSize(16);
+                            doc.setFont(undefined, 'bold');
+                            doc.setTextColor(15, 23, 42);
+                            doc.text('Resumen Ejecutivo', 20, 85);
+
+                            doc.setFontSize(10);
+                            doc.setFont(undefined, 'normal');
+                            doc.setTextColor(71, 85, 105);
+
+                            const content = [
+                                'Este reporte ha sido generado automáticamente por PentOS utilizando datos',
+                                'verificados en tiempo real de fuentes oficiales colombianas.',
+                                '',
+                                '📊 FUENTES DE VERIFICACIÓN AUTOMÁTICA:',
+                                '• API DANE - Empleos y datos económicos oficiales (99.9% uptime)',
+                                '• Red IoT - Monitoreo ambiental continuo (8,640 sensores activos)',
+                                '• API Alcaldía - Permisos y cumplimiento municipal (99.4% precisión)',
+                                '• API Policía Nacional - Indicadores seguridad pública (98.7% accuracy)',
+                                '',
+                                '🎯 METODOLOGÍA ESG AVANZADA:',
+                                '• Environmental (40%): Emisiones CO2, energía renovable, gestión residuos',
+                                '• Social (35%): Generación empleos, inversión comunitaria, seguridad',
+                                '• Governance (25%): Transparencia, cumplimiento normativo, reportería',
+                                '',
+                                '✅ CERTIFICACIÓN AUTOMÁTICA PentOS:',
+                                'Los datos han sido verificados automáticamente con una precisión del 99.2%',
+                                'vs auditorías manuales tradicionales. Nuestro algoritmo propietario valida',
+                                'información cada 15 minutos, 24/7, sin intervención humana.',
+                                '',
+                                '💰 VALOR AGREGADO INVERSIONISTAS:',
+                                '• Verificación 24/7 sin intervención manual',
+                                '• Acceso garantizado a fondos ESG internacionales ($200M+ pipeline)',
+                                '• ROI premium +16% vs desarrollo inmobiliario tradicional',
+                                '• Certificaciones automáticas LEED, BREEAM, EDGE',
+                                '• Tiempo de certificación reducido -60% vs proceso manual',
+                                '',
+                                '🚀 TECNOLOGÍA DE VANGUARDIA:',
+                                '• Machine Learning para predicción de compliance (94.8% precisión)',
+                                '• Blockchain para inmutabilidad de certificaciones',
+                                '• IoT network con 8,640+ sensores ambientales',
+                                '• APIs integradas con 15+ entidades gubernamentales',
+                                '',
+                                '🔄 MONITOREO CONTINUO:',
+                                '• Actualización métricas: Cada 15 minutos',
+                                '• Alertas automáticas: Tiempo real',
+                                '• Reportería: Automática cada 6 horas',
+                                '• Auditorías predictivas: Semanales',
+                                '',
+                                '📞 CONTACTO Y SOPORTE:',
+                                'Para más información: platform@pentos.co | www.pentos.co',
+                                'Soporte 24/7: soporte@pentos.co | WhatsApp: +57 300 123 4567'
+                            ];
+
+                            let yPos = 95;
+                            content.forEach(line => {
+                                if (yPos > 270) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += 5;
+                            });
+
+                            // Footer con diseño mejorado
+                            doc.setFillColor(248, 250, 252);
+                            doc.rect(0, 280, 210, 15, 'F');
+                            doc.setFontSize(8);
+                            doc.setTextColor(148, 163, 184);
+                            doc.text('PentOS - Haciendo visible lo invisible en el desarrollo sostenible', 20, 288);
+                            doc.text(`Documento verificado automáticamente | ${new Date().toISOString()}`, 20, 293);
+
+                            // Save with timestamp
+                            const fileName = `PentOS_${projectName.replace(/\s+/g, '_')}_${currentDate.getTime()}.pdf`;
+                            doc.save(fileName);
+
+                            // Success notification
+                            setTimeout(() => {
+                                this.showNotification('✅ PDF Generado', `${projectName} - Reporte ESG descargado exitosamente`);
+                                if (report) report.generating = false;
+                                
+                                // Refresh icons
+                                this.$nextTick(() => {
+                                    if (typeof lucide !== 'undefined') {
+                                        lucide.createIcons();
+                                    }
+                                });
+                            }, 1000);
+                        } catch (error) {
+                            console.error('Error generating PDF:', error);
+                            this.showNotification('❌ Error PDF', 'Error al generar el PDF. Intentar nuevamente.');
+                            if (report) report.generating = false;
+                        }
+                    }, 2000); // Simulate generation time
                 },
 
                 viewOnline(projectId) {
@@ -1864,68 +2206,106 @@
 
                     const targetUrl = urls[projectId] || 'https://platform.pentos.co/projects';
                     
-                    alert(`🌐 Abriendo vista online...\n\nURL: ${targetUrl}\n\n✨ Características online:\n• Dashboard interactivo tiempo real\n• Métricas actualizadas cada 15 segundos\n• Comparación benchmark sector\n• Alertas configurables\n• Histórico completo verificaciones\n• Acceso móvil optimizado\n\n🚀 Redirección en 3 segundos...`);
+                    this.showNotification('🌐 Abriendo Online', 'Redirigiendo a vista interactiva...');
                     
-                    console.log(`Navigating to: ${targetUrl}`);
+                    setTimeout(() => {
+                        window.open(targetUrl, '_blank');
+                    }, 1000);
                 },
 
                 showFullAIAnalysis() {
-                    const analysis = `🤖 ANÁLISIS IA COMPLETO - PENTOS v3.0 Vue.js
+                    const analysis = `🤖 ANÁLISIS IA COMPLETO - PENTOS v3.1 LIVE
 
-📊 OVERVIEW PORTAFOLIO:
+📊 OVERVIEW PORTAFOLIO (ACTUALIZADO TIEMPO REAL):
 • Score ESG promedio: 87/100 (+5 vs mes anterior)
 • Tendencia: Positiva en 8/10 indicadores clave
-• Benchmark Colombia: Top 15% desarrolladores
-• Fondos ESG disponibles: $200M+ pipeline
+• Benchmark Colombia: Top 12% desarrolladores
+• Fondos ESG disponibles: $247M+ pipeline activo
 
-🎯 PROYECCIONES Q2 2026 (Precisión 94.8%):
-• Mixy Mall Centro: 96/100 (alcanzará -30% emisiones)
-• Eco Towers Laureles: 82/100 (con plan remedial)
-• Verde Parque Norte: 93/100 (modelo consolidado)
+🎯 PROYECCIONES Q2 2026 (IA Precisión 96.3%):
+• Mixy Mall Centro: 96/100 (alcanzará -30% emisiones en 45 días)
+• Eco Towers Laureles: 84/100 (con plan remedial completado)
+• Verde Parque Norte: 94/100 (modelo consolidado para expansión)
 
-⚠️ ALERTAS PREDICTIVAS:
-• Regulación ESG Colombia: Nuevos estándares Q3
-• Mercado fondos: +25% demanda verificación automática
-• Competencia: 3 desarrolladores adoptando IA
+⚠️ ALERTAS PREDICTIVAS MACHINE LEARNING:
+• Regulación ESG Colombia: Nuevos estándares Q3 (95% probabilidad)
+• Mercado fondos: +28% demanda verificación automática
+• Competencia: 5 desarrolladores adoptando IA este año
 
-💰 IMPACTO FINANCIERO:
-• ROI ESG premium actual: +16% vs tradicional
-• Reducción primas seguro: -12% compliance
-• Tiempo certificación: -60% vs manual
-• Acceso fondos internacionales: Garantizado
+💰 IMPACTO FINANCIERO ACTUALIZADO:
+• ROI ESG premium actual: +16.3% vs tradicional
+• Reducción primas seguro: -12% por compliance automático
+• Tiempo certificación: -62% vs proceso manual
+• Acceso fondos internacionales: $247M garantizados
 
-🔮 RECOMENDACIONES AUTOMÁTICAS:
-1. Acelerar retrofit Eco Towers (ROI: 2.3x/18m)
-2. Replicar Verde Parque en Bogotá/Barranquilla
-3. Blockchain certificaciones (Q3 implementation)
-4. Expandir IoT +30% precisión datos
+🔮 RECOMENDACIONES AUTOMÁTICAS IA:
+1. Acelerar retrofit energético Eco Towers (ROI: 2.8x/16m)
+2. Replicar framework Verde Parque en Bogotá/Barranquilla
+3. Implementar blockchain certificaciones Q3 2026
+4. Expandir red IoT +35% para mayor precisión datos
 
-📈 MACHINE LEARNING INSIGHTS:
-• Patrones estacionales: Q1 y Q3 críticos
-• Optimización recursos: -15% costos operativos
-• Predicción compliance: 94.8% precisión
-• Benchmark sectorial: Actualizado semanal
+📈 MACHINE LEARNING INSIGHTS AVANZADOS:
+• Patrones estacionales identificados: Q1 y Q3 períodos críticos
+• Optimización recursos algoritmo: -18% costos operativos
+• Predicción compliance: 96.3% precisión (mejora continua)
+• Benchmark sectorial: Actualizado cada 168 horas
 
-🚀 ROADMAP 2026-2027:
-• Q2: Análisis predictivo 95%+ precisión
-• Q3: Mercados carbono internacionales
-• Q4: Dashboard IA personalizado inversionistas
-• 2027: Expansión LATAM (5+ países)
+🚀 ROADMAP TECNOLÓGICO 2026-2027:
+• Q2: Análisis predictivo 97%+ precisión con nuevos sensores
+• Q3: Integración mercados carbono internacionales
+• Q4: Dashboard IA personalizado para cada inversionista
+• Q1 2027: Expansión LATAM confirmada (7 países pipeline)
 
-Generado por PentOS AI Engine Vue.js v3.0
-Precisión: 94.8% | ${new Date().toLocaleString('es-ES')}`;
+🔄 ACTUALIZACIONES TIEMPO REAL:
+• Última sincronización: ${new Date().toLocaleTimeString('es-ES')}
+• Próxima actualización: En 12 minutos
+• APIs monitoreadas: 4/4 operativas
+• Precisión actual: 96.3%
+
+Generado por PentOS AI Engine v3.1 LIVE
+Algoritmo propietario | Precisión: 96.3% | ${new Date().toLocaleString('es-ES')}`;
 
                     alert(analysis);
                 },
 
+                showNotification(title, message) {
+                    const notification = document.createElement('div');
+                    notification.className = 'notification';
+                    notification.innerHTML = `
+                        <div class="notification-header">
+                            <i data-lucide="bell" style="width: 16px; height: 16px; color: var(--primary-green);"></i>
+                            <span class="notification-title">${title}</span>
+                        </div>
+                        <div class="notification-content">${message}</div>
+                    `;
+                    
+                    document.getElementById('notifications').appendChild(notification);
+
+                    // Initialize icons
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                    }
+
+                    // Remove after 4 seconds
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 4000);
+                },
+
                 addNewVerificationLog() {
                     const logs = [
-                        'API DANE sincronizado - Base empleo actualizada',
-                        'Red IoT confirma - Parámetros ambientales OK',
-                        'Alcaldía validó - Permisos construcción al día',
-                        'API Policía - Indicadores seguridad actualizados',
-                        'Certificación LEED - Progreso documentado',
-                        'Sistema ESG - Verificación automática completada'
+                        'API DANE sincronizado - Base empleo actualizada automáticamente',
+                        'Red IoT confirma - Todos los parámetros ambientales dentro de rango',
+                        'Alcaldía validó - Permisos construcción al día y certificados',
+                        'API Policía - Indicadores seguridad actualizados satisfactoriamente',
+                        'Certificación LEED - Progreso documentado y verificado',
+                        'Sistema ESG - Verificación automática completada exitosamente',
+                        'Sensores CO2 - Niveles óptimos confirmados en tiempo real',
+                        'Consumo energético - Eficiencia dentro de objetivos ESG',
+                        'Impacto social - Nuevos empleos registrados y verificados',
+                        'Compliance ambiental - Auditoría automática satisfactoria'
                     ];
 
                     const projects = ['Mixy Mall', 'Eco Towers', 'Verde Parque'];
@@ -1943,44 +2323,109 @@ Precisión: 94.8% | ${new Date().toLocaleString('es-ES')}`;
                         description: randomLog,
                         icon: 'check-circle',
                         color: '#10b981',
-                        highlight: true
+                        isNew: true
                     };
 
                     this.verificationLogs.unshift(newLog);
 
-                    // Remove highlight after 10 seconds
+                    // Show notification
+                    this.showNotification('🔄 Nueva Verificación', `${randomProject}: ${randomLog}`);
+
+                    // Remove new status after 8 seconds
                     setTimeout(() => {
                         const log = this.verificationLogs.find(l => l.id === newLog.id);
                         if (log) {
-                            log.highlight = false;
+                            log.isNew = false;
                         }
-                    }, 10000);
+                    }, 8000);
 
                     // Keep only last 8 items
                     if (this.verificationLogs.length > 8) {
                         this.verificationLogs = this.verificationLogs.slice(0, 8);
                     }
+                },
 
-                    // Re-initialize icons
-                    this.$nextTick(() => {
-                        if (typeof lucide !== 'undefined') {
-                            lucide.createIcons();
+                updateLiveCounters() {
+                    // Update verification metrics with animation
+                    const verificationsMetric = this.verificationMetrics.find(m => m.label === 'Verificaciones');
+                    if (verificationsMetric) {
+                        verificationsMetric.updating = true;
+                        this.liveData.verificationsToday += Math.floor(Math.random() * 3) + 1;
+                        verificationsMetric.value = this.liveData.verificationsToday;
+                        verificationsMetric.displayValue = this.liveData.verificationsToday.toString();
+                        
+                        setTimeout(() => {
+                            verificationsMetric.updating = false;
+                        }, 1500);
+                    }
+
+                    // Update empleos occasionally
+                    if (Math.random() > 0.7) {
+                        const empleosMetric = this.verificationMetrics.find(m => m.label === 'Empleos Verificados');
+                        if (empleosMetric) {
+                            empleosMetric.updating = true;
+                            this.liveData.empleosVerificados += Math.floor(Math.random() * 5) + 1;
+                            empleosMetric.value = this.liveData.empleosVerificados;
+                            empleosMetric.displayValue = this.liveData.empleosVerificados.toLocaleString();
+                            
+                            setTimeout(() => {
+                                empleosMetric.updating = false;
+                            }, 1500);
                         }
-                    });
+                    }
+
+                    // Update stats occasionally
+                    if (Math.random() > 0.8) {
+                        const reportesStat = this.stats.find(s => s.label === 'Reportes este mes');
+                        if (reportesStat) {
+                            reportesStat.updating = true;
+                            this.liveData.reportesGenerados += 1;
+                            reportesStat.value = this.liveData.reportesGenerados;
+                            reportesStat.displayValue = this.liveData.reportesGenerados.toString();
+                            
+                            setTimeout(() => {
+                                reportesStat.updating = false;
+                            }, 1500);
+                        }
+                    }
+
+                    // Update alerts count randomly
+                    if (Math.random() > 0.9) {
+                        this.liveData.alertsCount = Math.floor(Math.random() * 5) + 1;
+                    }
                 },
 
                 startRealTimeUpdates() {
-                    // Update verifications count
+                    // Update counters every 12-18 seconds
                     setInterval(() => {
-                        this.metrics.verifications += Math.floor(Math.random() * 2) + 1;
+                        this.updateLiveCounters();
                     }, 15000);
 
-                    // Add new verification logs
+                    // Add new verification logs every 20-30 seconds
                     setInterval(() => {
                         if (this.currentTab === 'verification') {
                             this.addNewVerificationLog();
                         }
                     }, 25000);
+
+                    // Show random notifications every 35 seconds
+                    setInterval(() => {
+                        const notifications = [
+                            { title: '🎯 Meta Alcanzada', message: 'Verde Parque Norte superó objetivo mensual de eficiencia energética' },
+                            { title: '📊 Nuevo Dato', message: 'API DANE actualizó base de empleos - 247 nuevas verificaciones' },
+                            { title: '🔔 Alerta Sistema', message: 'Sensores IoT detectaron optimización en consumo Mixy Mall' },
+                            { title: '✅ Certificación', message: 'Proceso LEED Gold avanzó 15% en Verde Parque Norte' },
+                            { title: '🚀 Mejora IA', message: 'Algoritmo predictivo alcanzó 96.8% de precisión' }
+                        ];
+                        
+                        const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
+                        this.showNotification(randomNotif.title, randomNotif.message);
+                    }, 35000);
+
+                    // Show welcome notification after 5 seconds
+                    setTimeout(() => {
+                        this.showNotification('🌟 PentOS Activo', 'Sistema de monitoreo ESG en tiempo real iniciado correctamente');
+                    }, 5000);
                 },
 
                 handleResize() {
@@ -1994,7 +2439,7 @@ Precisión: 94.8% | ${new Date().toLocaleString('es-ES')}`;
             mounted() {
                 // Initialize chart
                 this.$nextTick(() => {
-                    setTimeout(() => this.initializeChart(), 300);
+                    setTimeout(() => this.initializeChart(), 500);
                 });
 
                 // Start real-time updates
@@ -2006,14 +2451,16 @@ Precisión: 94.8% | ${new Date().toLocaleString('es-ES')}`;
                         lucide.createIcons();
                         console.log('✅ Lucide icons initialized');
                     }
-                }, 500);
+                }, 700);
 
                 // Handle resize
                 window.addEventListener('resize', this.handleResize);
 
-                console.log('🚀 PentOS Vue.js - Platform ESG Next Transparency Operations System');
-                console.log('📱 Light theme + Lucide icons + Roboto + Responsive');
-                console.log('✅ Vue.js 3 CDN + Chart.js + jsPDF + GitHub Pages ready');
+                console.log('🚀 PentOS LIVE - Platform ESG Next Transparency Operations System');
+                console.log('📱 Responsive + Vue.js 3 + Chart.js + jsPDF');
+                console.log('⚡ LIVE: Contadores tiempo real + Notificaciones automáticas');
+                console.log('📄 PDFs: Generación funcional elegante');
+                console.log('🎯 Figma: Diseño exacto light theme + Lucide + Roboto');
             },
 
             beforeUnmount() {
