@@ -2042,7 +2042,7 @@
                 <div class="project-modal-header">
                     <div class="project-modal-title">
                         <i data-lucide="building" style="width: 18px; height: 18px; color: var(--primary-green);"></i>
-                        <h3>{{ selectedProject?.project || 'Proyecto' }}</h3>
+                        <h3>{{ selectedProject?.name || 'Proyecto' }}</h3>
                         <div class="project-score-badge" :style="{ 
                             background: selectedProject?.score >= 90 ? 'var(--primary-green)' : 
                                        selectedProject?.score >= 75 ? 'var(--info)' : 'var(--warning)',
@@ -2065,7 +2065,7 @@
                         <div class="detail-section-content">
                             <p><strong>Ubicación:</strong> {{ selectedProject?.location || 'Medellín, Antioquia' }}</p>
                             <p><strong>Estado:</strong> {{ selectedProject?.status || 'En operación' }}</p>
-                            <p><strong>Última verificación:</strong> {{ new Date().toLocaleDateString('es-ES') }}</p>
+                            <p><strong>Última verificación:</strong> Hoy</p>
                             <p><strong>Certificaciones:</strong> LEED Gold, EDGE Advanced, ESG Verified</p>
                         </div>
                     </div>
@@ -2077,15 +2077,15 @@
                         </h4>
                         <div class="metrics-row">
                             <div class="metric-detail">
-                                <div class="metric-detail-value">{{ Math.floor((selectedProject?.score || 85) * 0.4) }}/40</div>
+                                <div class="metric-detail-value">34/40</div>
                                 <div class="metric-detail-label">Ambiental</div>
                             </div>
                             <div class="metric-detail">
-                                <div class="metric-detail-value">{{ Math.floor((selectedProject?.score || 85) * 0.35) }}/35</div>
+                                <div class="metric-detail-value">30/35</div>
                                 <div class="metric-detail-label">Social</div>
                             </div>
                             <div class="metric-detail">
-                                <div class="metric-detail-value">{{ Math.floor((selectedProject?.score || 85) * 0.25) }}/25</div>
+                                <div class="metric-detail-value">21/25</div>
                                 <div class="metric-detail-label">Gobernanza</div>
                             </div>
                         </div>
@@ -2111,11 +2111,11 @@
                             Impacto Social
                         </h4>
                         <div class="detail-section-content">
-                            <p>• <strong>Empleos directos generados:</strong> {{ Math.floor(Math.random() * 200 + 150) }} posiciones</p>
-                            <p>• <strong>Empleos indirectos:</strong> {{ Math.floor(Math.random() * 100 + 80) }} adicionales estimados</p>
-                            <p>• <strong>Inversión comunitaria:</strong> ${{ Math.floor(Math.random() * 500 + 200) }K anuales</p>
+                            <p>• <strong>Empleos directos generados:</strong> 187 posiciones</p>
+                            <p>• <strong>Empleos indirectos:</strong> 124 adicionales estimados</p>
+                            <p>• <strong>Inversión comunitaria:</strong> $347K anuales</p>
                             <p>• <strong>Programas sociales:</strong> 3 iniciativas activas</p>
-                            <p>• <strong>Beneficiarios comunidad:</strong> {{ Math.floor(Math.random() * 2000 + 1500) }} personas</p>
+                            <p>• <strong>Beneficiarios comunidad:</strong> 2,156 personas</p>
                         </div>
                     </div>
 
@@ -2125,10 +2125,10 @@
                             Verificación Automática
                         </h4>
                         <div class="detail-section-content">
-                            <p>• <strong>Última verificación:</strong> {{ new Date().toLocaleTimeString('es-ES') }}</p>
+                            <p>• <strong>Última verificación:</strong> Hace 3 minutos</p>
                             <p>• <strong>Fuentes verificadas:</strong> 4 APIs oficiales</p>
-                            <p>• <strong>Precisión datos:</strong> 99.{{ Math.floor(Math.random() * 9 + 1) }}%</p>
-                            <p>• <strong>Sensores IoT:</strong> {{ Math.floor(Math.random() * 50 + 120) }} unidades activas</p>
+                            <p>• <strong>Precisión datos:</strong> 99.3%</p>
+                            <p>• <strong>Sensores IoT:</strong> 147 unidades activas</p>
                             <p>• <strong>Auditorías automáticas:</strong> Cada 15 minutos</p>
                         </div>
                     </div>
@@ -2139,10 +2139,10 @@
                             Proyecciones & Recomendaciones IA
                         </h4>
                         <div class="detail-section-content">
-                            <p>• <strong>Tendencia score:</strong> +{{ Math.floor(Math.random() * 5 + 2) }} puntos estimados próximos 6 meses</p>
-                            <p>• <strong>ROI ESG premium:</strong> +{{ Math.floor(Math.random() * 8 + 12) }}% vs desarrollo tradicional</p>
-                            <p>• <strong>Tiempo certificación:</strong> -{{ Math.floor(Math.random() * 20 + 40) }}% vs proceso manual</p>
-                            <p>• <strong>Riesgo compliance:</strong> Bajo ({{ Math.floor(Math.random() * 5 + 2) }}% probabilidad desvío)</p>
+                            <p>• <strong>Tendencia score:</strong> +4 puntos estimados próximos 6 meses</p>
+                            <p>• <strong>ROI ESG premium:</strong> +16% vs desarrollo tradicional</p>
+                            <p>• <strong>Tiempo certificación:</strong> -47% vs proceso manual</p>
+                            <p>• <strong>Riesgo compliance:</strong> Bajo (3% probabilidad desvío)</p>
                             <p>• <strong>Recomendación IA:</strong> Acelerar inversión energética Q2 2026</p>
                         </div>
                     </div>
@@ -3080,40 +3080,33 @@
                                 this.showNotification('✅ PDF Simulado', 'Generación PDF completa funciona en producción');
                                 
                                 // Show comprehensive demo content
-                                const demoContent = `📄 REPORTE ESG COMPLETO - ${projectName}
-
-📋 CONTENIDO INCLUIDO (${Math.floor(Math.random() * 3 + 8)} páginas):
-
-I. RESUMEN EJECUTIVO
-• Score ESG ${Math.floor(Math.random() * 15 + 85)}/100 con tendencia
-• Benchmark sector y comparativa regional
-• Certificaciones internacionales activas
-
-II. METODOLOGÍA ESG PENTOS  
-• Environmental (40%): Emisiones, energía, agua, residuos
-• Social (35%): Empleos, comunidad, seguridad, cadena suministro
-• Governance (25%): Transparencia, compliance, ética, riesgos
-
-III. FUENTES VERIFICACIÓN AUTOMÁTICA
-• API DANE: ${Math.floor(Math.random() * 500 + 1000)} verificaciones/mes
-• IoT Network: ${Math.floor(Math.random() * 100 + 120)} sensores activos
-• API Alcaldía: ${Math.floor(Math.random() * 100 + 200)} permisos verificados
-• API Policía: ${Math.floor(Math.random() * 50 + 80)} indicadores seguridad
-
-IV. MÉTRICAS DETALLADAS
-• Emisiones GEI: Scopes 1,2,3 con reducción -${Math.floor(Math.random() * 15 + 20)}%
-• Empleos: ${Math.floor(Math.random() * 100 + 150)} directos + ${Math.floor(Math.random() * 50 + 80)} indirectos
-• Inversión social: $${Math.floor(Math.random() * 500 + 1000)}K anuales
-• ${Math.floor(Math.random() * 1000 + 1500)} beneficiarios comunitarios
-
-V. RECOMENDACIONES IA
-• Proyecciones 2026-2027 
-• Oportunidades mejora ESG
-• ROI premium estimado +${Math.floor(Math.random() * 8 + 15)}%
-• Próximos hitos críticos
-
-✅ En producción se descargaría PDF real de ${Math.floor(Math.random() * 3 + 8)} páginas
-📞 Soporte: platform@pentos.co | +57 300 123 4567`;
+                                const demoContent = '📄 REPORTE ESG COMPLETO - ' + projectName + '\n\n' +
+                                    '📋 CONTENIDO INCLUIDO (10 páginas):\n\n' +
+                                    'I. RESUMEN EJECUTIVO\n' +
+                                    '• Score ESG 92/100 con tendencia\n' +
+                                    '• Benchmark sector y comparativa regional\n' +
+                                    '• Certificaciones internacionales activas\n\n' +
+                                    'II. METODOLOGÍA ESG PENTOS\n' +
+                                    '• Environmental (40%): Emisiones, energía, agua, residuos\n' +
+                                    '• Social (35%): Empleos, comunidad, seguridad, cadena suministro\n' +
+                                    '• Governance (25%): Transparencia, compliance, ética, riesgos\n\n' +
+                                    'III. FUENTES VERIFICACIÓN AUTOMÁTICA\n' +
+                                    '• API DANE: 1,247 verificaciones/mes\n' +
+                                    '• IoT Network: 156 sensores activos\n' +
+                                    '• API Alcaldía: 343 permisos verificados\n' +
+                                    '• API Policía: 89 indicadores seguridad\n\n' +
+                                    'IV. MÉTRICAS DETALLADAS\n' +
+                                    '• Emisiones GEI: Scopes 1,2,3 con reducción -28%\n' +
+                                    '• Empleos: 187 directos + 124 indirectos\n' +
+                                    '• Inversión social: $347K anuales\n' +
+                                    '• 2,156 beneficiarios comunitarios\n\n' +
+                                    'V. RECOMENDACIONES IA\n' +
+                                    '• Proyecciones 2026-2027\n' +
+                                    '• Oportunidades mejora ESG\n' +
+                                    '• ROI premium estimado +16%\n' +
+                                    '• Próximos hitos críticos\n\n' +
+                                    '✅ En producción se descargaría PDF real de 10 páginas\n' +
+                                    '📞 Soporte: platform@pentos.co | +57 300 123 4567';
 
                                 alert(demoContent);
                             }, 1000);
